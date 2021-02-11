@@ -6,7 +6,7 @@
 /*   By: angonzal <angonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 18:49:38 by angonzal          #+#    #+#             */
-/*   Updated: 2021/02/10 19:34:27 by angonzal         ###   ########.fr       */
+/*   Updated: 2021/02/11 20:35:28 by angonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,13 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stddef.h>
+# include <string.h>
+# include <fcntl.h>
 
-
+size_t	ft_strlen(char *str);
+char	*ft_strdup(char *str1);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif
-
