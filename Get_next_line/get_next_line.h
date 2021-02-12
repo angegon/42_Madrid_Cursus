@@ -6,7 +6,7 @@
 /*   By: angonzal <angonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 18:49:38 by angonzal          #+#    #+#             */
-/*   Updated: 2021/02/11 20:35:28 by angonzal         ###   ########.fr       */
+/*   Updated: 2021/02/12 10:57:24 by angonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ size_t	ft_strlen(char *str);
 char	*ft_strdup(char *str1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strchr(const char *s, int c);
 
 #endif
