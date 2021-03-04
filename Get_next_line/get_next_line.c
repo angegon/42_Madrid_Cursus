@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angel <angel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 18:49:34 by angonzal          #+#    #+#             */
-/*   Updated: 2021/03/04 09:55:34 by angonzal         ###   ########.fr       */
+/*   Updated: 2021/03/04 19:18:48 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		ft_end_file(char **static_text3, char **line)
 {
 	if (!*static_text3)
 	{
-		*line = ft_strdup("");
+		*line  = ft_strdup("");
 		return (END_OF_FILE);
 	}
 	if (ft_is_there_end_line(static_text3, line))
@@ -61,11 +61,24 @@ int		ft_end_file(char **static_text3, char **line)
 	return (END_OF_FILE);
 }
 
+void ft_init (char **static_text, char **str_rff)
+{
+	char		*aux_text;
+
+	if (*static_text)
+	{
+		aux_text = ft_strjoin(*static_text, *str_rff);
+		ft_free_pointer(static_text);
+		*static_text = aux_text;
+	}
+	!*static_text ? (*static_text = ft_strdup(str_rff)) : 0;
+}
+
 int		get_next_line(int fd, char **line)
 {
 	ssize_t		nr_bytes_read;
 	static char	*static_text;
-	char		*aux_text;
+
 	char		*str_readfromfile;
 
 	if (fd < 0 || !line || BUFFER_SIZE < 1 ||
@@ -74,13 +87,7 @@ int		get_next_line(int fd, char **line)
 	while ((nr_bytes_read = read(fd, str_readfromfile, BUFFER_SIZE)) > 0)
 	{
 		str_readfromfile[nr_bytes_read] = '\0';
-		if (static_text)
-		{
-			aux_text = ft_strjoin(static_text, str_readfromfile);
-			ft_free_pointer(&static_text);
-			static_text = aux_text;
-		}
-		!static_text ? (static_text = ft_strdup(str_readfromfile)) : 0;
+		ft_init(&static_text, &str_readfromfile);
 		if (ft_is_there_end_line(&static_text, line))
 		{
 			ft_free_pointer(&str_readfromfile);

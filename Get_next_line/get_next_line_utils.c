@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angel <angel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 18:49:41 by angonzal          #+#    #+#             */
-/*   Updated: 2021/03/04 11:00:13 by angonzal         ###   ########.fr       */
+/*   Updated: 2021/03/04 19:12:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	j = 0;
 	aux = 0;
 	while (s[aux] != 0)
-		aux++
+		aux++;
 	while (start < aux && j < len)
 		new_str[j++] = s[start++];
 	new_str[j] = '\0';
@@ -60,10 +60,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	a = 0;
 	while (s1[a] != 0)
-		a++
+		a++;
 	b = 0;
 	while (s2[b] != 0)
-		b++
+		b++;
 	if (!s1 || !s2 ||
 		!(new_str = (char *)malloc(sizeof(char) * (a + b + 1))))
 		return (0);
