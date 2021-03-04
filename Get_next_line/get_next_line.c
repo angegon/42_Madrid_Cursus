@@ -30,7 +30,7 @@ int		ft_is_there_end_line(char **static_text2, char **line)
 	n = 0;
 	aux_text2 = NULL;
 	len = 0;
-	while (*static_text2[len] != 0)
+	while (static_text2[0][len] != 0)
 		len++;
 	while (n < len)
 	{
