@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 18:49:34 by angonzal          #+#    #+#             */
-/*   Updated: 2021/03/04 19:18:48 by marvin           ###   ########.fr       */
+/*   Updated: 2021/03/04 19:47:39 by angonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		ft_end_file(char **static_text3, char **line)
 {
 	if (!*static_text3)
 	{
-		*line  = ft_strdup("");
+		*line = ft_strdup("");
 		return (END_OF_FILE);
 	}
 	if (ft_is_there_end_line(static_text3, line))
@@ -61,7 +61,7 @@ int		ft_end_file(char **static_text3, char **line)
 	return (END_OF_FILE);
 }
 
-void ft_init (char **static_text, char **str_rff)
+void	ft_init(char **static_text, char **str_rff)
 {
 	char		*aux_text;
 
@@ -71,14 +71,13 @@ void ft_init (char **static_text, char **str_rff)
 		ft_free_pointer(static_text);
 		*static_text = aux_text;
 	}
-	!*static_text ? (*static_text = ft_strdup(str_rff)) : 0;
+	!*static_text ? (*static_text = ft_strdup(*str_rff)) : 0;
 }
 
 int		get_next_line(int fd, char **line)
 {
 	ssize_t		nr_bytes_read;
 	static char	*static_text;
-
 	char		*str_readfromfile;
 
 	if (fd < 0 || !line || BUFFER_SIZE < 1 ||

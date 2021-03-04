@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 18:49:41 by angonzal          #+#    #+#             */
-/*   Updated: 2021/03/04 19:12:33 by marvin           ###   ########.fr       */
+/*   Updated: 2021/03/04 20:04:26 by angonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char		*new_str;
-	char		*first;
+	char	*new_str;
+	char	*first;
 	int		a;
 	int		b;
 
