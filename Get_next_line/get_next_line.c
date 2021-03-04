@@ -6,7 +6,7 @@
 /*   By: angel <angel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 18:49:34 by angonzal          #+#    #+#             */
-/*   Updated: 2021/03/03 22:22:13 by angel            ###   ########.fr       */
+/*   Updated: 2021/03/04 09:55:34 by angonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ int		ft_is_there_end_line(char **static_text2, char **line)
 
 	n = 0;
 	aux_text2 = NULL;
-	len = ft_strlen(*static_text2);
+	len = 0;
+	while (*static_text2[len] != 0)
+		len++;
 	while (n < len)
 	{
 		if (static_text2[0][n] == '\n')
@@ -65,9 +67,9 @@ int		get_next_line(int fd, char **line)
 	static char	*static_text;
 	char		*aux_text;
 	char		*str_readfromfile;
-	
-	if (fd < 0 || !line || BUFFER_SIZE < 1 || 
-	(!(str_readfromfile = (char *) ft_calloc(BUFFER_SIZE + 1,sizeof(char)))))
+
+	if (fd < 0 || !line || BUFFER_SIZE < 1 ||
+	(!(str_readfromfile = (char *)ft_calloc(BUFFER_SIZE + 1, sizeof(char)))))
 		return (IS_ERROR);
 	while ((nr_bytes_read = read(fd, str_readfromfile, BUFFER_SIZE)) > 0)
 	{

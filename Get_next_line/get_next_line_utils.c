@@ -6,59 +6,45 @@
 /*   By: angel <angel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 18:49:41 by angonzal          #+#    #+#             */
-/*   Updated: 2021/03/03 22:04:39 by angel            ###   ########.fr       */
+/*   Updated: 2021/03/04 11:00:13 by angonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
-{
-	size_t aux;
-
-	if (!dst && !src)
-		return (0);
-	aux = 0;
-	while (aux < n)
-	{
-		((unsigned char *)dst)[aux] = ((unsigned char *)src)[aux];
-		aux++;
-	}
-	return (dst);
-}
-
 char	*ft_strdup(const char *s1)
 {
-	char *s2;
-	int aux;
+	char		*s2;
+	size_t		aux;
+	size_t		temp;
 
-	aux = ft_strlen(s1);
+	aux = 0;
+	while (s1[aux] != 0)
+		aux++;
 	if (!(s2 = (char *)malloc(aux + 1)))
 		return (0);
-	ft_memcpy(s2, s1, aux + 1);
+	aux = aux + 1;
+	temp = 0;
+	while (temp < aux)
+	{
+		((unsigned char *)s2)[temp] = ((unsigned char *)s1)[temp];
+		temp++;
+	}
 	return (s2);
-}
-
-size_t	ft_strlen(const char *s)
-{
-	size_t l;
-
-	l = 0;
-	while (s[l] != 0)
-		l++;
-	return (l);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*new_str;
-	size_t	j;
-	size_t aux;
-	
+	char		*new_str;
+	size_t		j;
+	size_t		aux;
+
 	if (!s || !(new_str = (char *)malloc(len + 1)))
 		return (0);
 	j = 0;
-	aux = ft_strlen(s);
+	aux = 0;
+	while (s[aux] != 0)
+		aux++
 	while (start < aux && j < len)
 		new_str[j++] = s[start++];
 	new_str[j] = '\0';
@@ -67,16 +53,21 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*new_str;
-	char	*first;
-	int a;
-	int b;
-	a = ft_strlen(s1);
-	b = ft_strlen(s2);
+	char		*new_str;
+	char		*first;
+	int		a;
+	int		b;
+
+	a = 0;
+	while (s1[a] != 0)
+		a++
+	b = 0;
+	while (s2[b] != 0)
+		b++
 	if (!s1 || !s2 ||
-		!(new_str = (char *) malloc(sizeof(char) * (a + b + 1))))
+		!(new_str = (char *)malloc(sizeof(char) * (a + b + 1))))
 		return (0);
-	ft_memset(new_str, 0, (a+b+1));
+	ft_memset(new_str, 0, (a + b + 1));
 	first = new_str;
 	while (*s1)
 		*new_str++ = *s1++;
@@ -88,7 +79,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	size_t aux;
+	size_t		aux;
 
 	aux = 0;
 	while (aux < len)
@@ -101,33 +92,12 @@ void	*ft_memset(void *b, int c, size_t len)
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	size_t	tot_size;
-	void	*dst;
+	size_t		tot_size;
+	void		*dst;
 
 	tot_size = size * count;
 	if (!(dst = malloc(size * count)))
 		return (0);
 	ft_memset(dst, 0, tot_size);
 	return (dst);
-}
-
-char	*ft_strchr(char *s, int c)
-{
-	while (*s && c != *s)
-		s++;
-	if (c == *s)
-		return ((char *)s);
-	return (0);
-}
-
-char	*ft_struntilchr(char *s, int c)
-{
-	char *aux;
-
-	aux = s;
-	while (*s && c != *s)
-		s++;
-	if (c == *s)
-		*(s) = '\0';
-	return (aux);
 }
